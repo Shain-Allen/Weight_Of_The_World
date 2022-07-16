@@ -1,18 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemCollisionHandler : MonoBehaviour
 {
-	// Start is called before the first frame update
-	void Start()
-	{
+	[SerializeField]
+	BucketControl leftBucket;
+	[SerializeField]
+	BucketControl RightBucket;
 
+	private void Start()
+	{
+		leftBucket.OnObjectCollected += OnObjectCollected;
+		RightBucket.OnObjectCollected += OnObjectCollected;
 	}
 
-	// Update is called once per frame
-	void Update()
+	private void OnObjectCollected(string bucketName, GameObject collectedObject)
 	{
+		Debug.Log(bucketName + " cought " + collectedObject.name);
 
+		Destroy(collectedObject);
 	}
 }
