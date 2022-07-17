@@ -652,6 +652,7 @@ MonoBehaviour:
   spawnTimer: 1
   items:
   - {fileID: 2991826402593562537, guid: 61df55081faafdd45922724347dbfce7, type: 3}
+  - {fileID: 2716629038669750969, guid: aeca255abbaeac9479ec68fa5de74288, type: 3}
   spawnItems: 1
 --- !u!4 &2092157517
 Transform:
@@ -813,4 +814,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftBucket: {fileID: 641467631}
-  RightBucket: {fileID: 343169593}
+  rightBucket: {fileID: 0}
