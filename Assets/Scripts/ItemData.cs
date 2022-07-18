@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class ItemData : MonoBehaviour
 {
-	public ItemValue itemValue;
+	public ItemValue itemValues;
+
+	public void SetParameters()
+	{
+		this.GetComponent<Rigidbody>().drag = itemValues.itemDrag;
+	}
 }

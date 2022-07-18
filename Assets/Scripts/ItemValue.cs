@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemValue", menuName = "ItemValue")]
 public class ItemValue : ScriptableObject
 {
-	public string itemWeight;
-
+	public int itemWeight;
+	public float itemDrag;
 }

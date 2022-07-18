@@ -45,8 +45,15 @@ public class ItemDropper : MonoBehaviour
 			spawnPos = PointOnCircle(transform.position, radius, angle);
 
 			yield return new WaitForSeconds(spawnTimer);
+			GameObject item;
+			item = Instantiate(items[Random.Range(0, items.Length)], spawnPos, Quaternion.identity);
 
-			Instantiate(items[Random.Range(0, items.Length)], spawnPos, Quaternion.identity);
+			if (item.GetComponent<ItemData>())
+			{
+				item.GetComponent<ItemData>().SetParameters();
+			}
+
+			item = null;
 		}
 	}
 
