@@ -8,7 +8,9 @@ public class ItemDropper : MonoBehaviour
 	private float radius = 5f;
 
 	[SerializeField]
-	private float spawnTimer = 3f;
+	private float spawnTimerMax = 10f;
+	[SerializeField]
+	private float spawnTimerMin = 3f;
 
 	[SerializeField]
 	private GameObject[] items;
@@ -44,7 +46,7 @@ public class ItemDropper : MonoBehaviour
 			float angle = Random.Range(0, 360);
 			spawnPos = PointOnCircle(transform.position, radius, angle);
 
-			yield return new WaitForSeconds(spawnTimer);
+			yield return new WaitForSeconds(Random.Range(spawnTimerMin, spawnTimerMax));
 			GameObject item;
 			item = Instantiate(items[Random.Range(0, items.Length)], spawnPos, Quaternion.identity);
 

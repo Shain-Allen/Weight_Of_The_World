@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   itemWeight: 3
-  itemDrag: 20
+  itemDrag: 10

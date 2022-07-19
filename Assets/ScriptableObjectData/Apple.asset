@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   itemWeight: 5
-  itemDrag: 20
+  itemDrag: 15
