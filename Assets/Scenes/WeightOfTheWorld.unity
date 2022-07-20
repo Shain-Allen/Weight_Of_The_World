@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 410087040}
   - component: {fileID: 410087042}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: The Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,8 +796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 3.831833, y: 0}
-  m_SizeDelta: {x: 7.66356, y: 0}
+  m_AnchoredPosition: {x: 1.804573, y: 0}
+  m_SizeDelta: {x: 3.6091537, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636715832
 MonoBehaviour:
@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 2021714819}
   - component: {fileID: 2021714818}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1585,7 +1585,7 @@ GameObject:
   - component: {fileID: 2092157517}
   - component: {fileID: 2092157516}
   m_Layer: 0
-  m_Name: itemSpawn
+  m_Name: itemSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

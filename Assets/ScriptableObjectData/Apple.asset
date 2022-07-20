@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b243bb275b76e5469bb18aae01b6d6d, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  itemWeight: 5
+  itemWeight: 2
   itemDrag: 15
