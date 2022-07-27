@@ -16,6 +16,10 @@ public class BalanceBar : MonoBehaviour
 
 	private void Start()
 	{
+		value = 0f;
+		fillRect.anchorMin = new Vector2(0.5f, 0);
+		fillRect.anchorMax = new Vector2(0.5f, 1);
+
 		fillRect.offsetMax = new Vector2(0, 0);
 		fillRect.offsetMin = new Vector2(0, 0);
 	}
@@ -24,13 +28,18 @@ public class BalanceBar : MonoBehaviour
 	{
 		if (value > 0)
 		{
-			fillRect.anchorMax = anchorMaxRight;
+			fillRect.anchorMax = anchorMaxLeft + new Vector2(value / 2, 0);
 			fillRect.anchorMin = anchorMinRight;
+		}
+		else if (value < 0)
+		{
+			fillRect.anchorMax = anchorMaxLeft;
+			fillRect.anchorMin = anchorMinRight + new Vector2(value / 2, 0);
 		}
 		else
 		{
-			fillRect.anchorMax = anchorMaxLeft;
-			fillRect.anchorMin = anchorMinLeft;
+			fillRect.offsetMax = new Vector2(0, 0);
+			fillRect.offsetMin = new Vector2(0, 0);
 		}
 	}
 }
