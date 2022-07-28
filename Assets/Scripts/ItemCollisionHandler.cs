@@ -12,6 +12,8 @@ public class ItemCollisionHandler : MonoBehaviour
 	BucketControl rightBucket;
 	[SerializeField]
 	BalanceBar balanceDisplay;
+	[SerializeField]
+	FloorHandler floor;
 
 	private int leftBucketWeight = 0;
 	private int rightBucketWeight = 0;
@@ -19,10 +21,19 @@ public class ItemCollisionHandler : MonoBehaviour
 	[SerializeField]
 	private int balanceCapacity = 10;
 
+	[SerializeField]
+	private int godsGraceCapacity = 4;
+	private int godsGrace;
+
+	public event Action OnGameOver;
+
 	private void Start()
 	{
 		leftBucket.OnObjectCollected += OnObjectCollected;
 		rightBucket.OnObjectCollected += OnObjectCollected;
+		floor.OnObjectMissed += OnObjectMissed;
+
+		godsGrace = godsGraceCapacity;
 	}
 
 	private void OnObjectCollected(string bucketName, GameObject collectedObject)
@@ -70,5 +81,16 @@ public class ItemCollisionHandler : MonoBehaviour
 		}
 
 		Destroy(collectedObject);
+	}
+
+	private void OnObjectMissed(GameObject other)
+	{
+		Destroy(other);
+		godsGrace--;
+
+		if (godsGrace == 0)
+		{
+			OnGameOver?.Invoke();
+		}
 	}
 }

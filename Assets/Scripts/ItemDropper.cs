@@ -17,9 +17,10 @@ public class ItemDropper : MonoBehaviour
 
 	public bool spawnItems = true;
 
+	[SerializeField]
+	private ItemCollisionHandler itemCollisionHandler;
 
 	private float NumPoints = 32;
-
 	private void OnDrawGizmos()
 	{
 		float lastPoint = 0;
@@ -35,6 +36,13 @@ public class ItemDropper : MonoBehaviour
 	private void Start()
 	{
 		StartCoroutine(spawnItem());
+
+		itemCollisionHandler.OnGameOver += OnGameOver;
+	}
+
+	private void OnGameOver()
+	{
+		spawnItems = false;
 	}
 
 	IEnumerator spawnItem()
