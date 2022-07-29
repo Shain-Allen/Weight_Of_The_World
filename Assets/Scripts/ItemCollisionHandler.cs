@@ -25,6 +25,9 @@ public class ItemCollisionHandler : MonoBehaviour
 	private int godsGraceCapacity = 4;
 	private int godsGrace;
 
+	[SerializeField]
+	private RectTransform missedObjectsDisplay;
+
 	public event Action OnGameOver;
 
 	private void Start()
@@ -34,6 +37,9 @@ public class ItemCollisionHandler : MonoBehaviour
 		floor.OnObjectMissed += OnObjectMissed;
 
 		godsGrace = godsGraceCapacity;
+
+		missedObjectsDisplay.GetComponentInChildren<TMPro.TextMeshPro>().SetText($"Missed Objecs: 0/{godsGraceCapacity}");
+		Debug.Log(missedObjectsDisplay.transform.GetChild(1).name);
 	}
 
 	private void OnObjectCollected(string bucketName, GameObject collectedObject)
@@ -81,12 +87,19 @@ public class ItemCollisionHandler : MonoBehaviour
 		}
 
 		Destroy(collectedObject);
+
+		if (leftBucketWeight >= balanceCapacity || leftBucketWeight >= balanceCapacity)
+		{
+			OnGameOver?.Invoke();
+		}
 	}
 
 	private void OnObjectMissed(GameObject other)
 	{
 		Destroy(other);
 		godsGrace--;
+
+		missedObjectsDisplay.GetComponentInChildren<TMPro.TextMeshPro>().SetText($"Missed Objecs: {godsGraceCapacity - godsGrace}/{godsGraceCapacity}");
 
 		if (godsGrace == 0)
 		{
