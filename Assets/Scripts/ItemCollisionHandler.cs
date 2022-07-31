@@ -28,7 +28,7 @@ public class ItemCollisionHandler : MonoBehaviour
 	[SerializeField]
 	private GameObject missedObjectsDisplay;
 
-	public event Action OnGameOver;
+	public event Action<string> OnGameOver;
 
 	private void Start()
 	{
@@ -55,13 +55,15 @@ public class ItemCollisionHandler : MonoBehaviour
 			}
 		}
 
-		float balanceDirection = leftBucketWeight - rightBucketWeight;
+		float balanceDirection = rightBucketWeight - leftBucketWeight;
 
 		balanceDisplay.value = Mathf.Clamp((float)balanceDirection / (float)balanceCapacity, -1, 1);
 
+		Debug.Log("sliderValue: " + Mathf.Clamp((float)balanceDirection / (float)balanceCapacity, -1, 1));
+
 		if (balanceDirection < 0)
 		{
-			balanceDirection = balanceDirection * -1;
+			balanceDirection *= -1;
 		}
 
 		switch (Mathf.Clamp((float)balanceDirection / (float)balanceCapacity, -1, 1))
@@ -85,24 +87,22 @@ public class ItemCollisionHandler : MonoBehaviour
 
 		Destroy(collectedObject);
 
-		if (leftBucketWeight >= balanceCapacity || leftBucketWeight >= balanceCapacity)
+		if (balanceDirection >= balanceCapacity)
 		{
-			OnGameOver?.Invoke();
+			OnGameOver?.Invoke("You have become unbalanced and fell down the mountain");
 		}
 	}
 
 	private void OnObjectMissed(GameObject other)
 	{
 		Destroy(other);
-		Debug.Log("Before: " + godsGrace);
-		godsGrace = godsGrace + 1;
-		Debug.Log("After: " + godsGrace);
 
+		godsGrace++;
 		missedObjectsDisplay.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText($"Missed Objecs: {godsGrace}/{ggCapacity}");
 
 		if (godsGrace == ggCapacity)
 		{
-			OnGameOver?.Invoke();
+			OnGameOver?.Invoke("you have displeased the Gods. They dislike having their things touch the ground");
 		}
 	}
 }

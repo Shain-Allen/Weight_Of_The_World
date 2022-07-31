@@ -8,17 +8,19 @@ public class OverlayController : MonoBehaviour
 	private ItemCollisionHandler itemCH;
 
 	[SerializeField]
-	private GameObject gameOverDisplay;
+	private GameOverMenu gameOverDisplay;
 
-	private void Start()
+	private void start()
 	{
 		itemCH.OnGameOver += OnGameOver;
 
-		gameOverDisplay.SetActive(false);
+		gameOverDisplay.gameObject.SetActive(false);
 	}
 
-	public void OnGameOver()
+	public void OnGameOver(string message)
 	{
-		gameOverDisplay.SetActive(true);
+		gameOverDisplay.gameObject.SetActive(true);
 	}
+
+
 }

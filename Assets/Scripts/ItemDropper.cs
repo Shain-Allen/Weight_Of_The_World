@@ -40,7 +40,7 @@ public class ItemDropper : MonoBehaviour
 		itemCollisionHandler.OnGameOver += OnGameOver;
 	}
 
-	private void OnGameOver()
+	private void OnGameOver(string message)
 	{
 		spawnItems = false;
 	}
