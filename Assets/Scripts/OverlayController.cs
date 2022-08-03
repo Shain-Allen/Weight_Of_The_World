@@ -10,7 +10,8 @@ public class OverlayController : MonoBehaviour
 	[SerializeField]
 	private GameOverMenu gameOverDisplay;
 
-	private void start()
+
+	private void Start()
 	{
 		itemCH.OnGameOver += OnGameOver;
 
@@ -19,8 +20,7 @@ public class OverlayController : MonoBehaviour
 
 	public void OnGameOver(string message)
 	{
+		Debug.Log("yes, game over");
 		gameOverDisplay.gameObject.SetActive(true);
 	}
-
-
 }

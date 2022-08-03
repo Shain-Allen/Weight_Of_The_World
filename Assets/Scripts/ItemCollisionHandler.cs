@@ -87,6 +87,8 @@ public class ItemCollisionHandler : MonoBehaviour
 
 		Destroy(collectedObject);
 
+		Debug.Log($"balance direction: {balanceDirection}, balance Capacity: {balanceCapacity}");
+
 		if (balanceDirection >= balanceCapacity)
 		{
 			OnGameOver?.Invoke("You have become unbalanced and fell down the mountain");
