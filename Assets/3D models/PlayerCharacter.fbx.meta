@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: 1785721120731525205
     second: PlayerCharacter|RotatePoleRight
+  - first:
+      74: -5409780685377583260
+    second: PlayerCharacter|PoleIdle
   externalObjects: {}
   materials:
     materialImportMode: 2

@@ -59,7 +59,7 @@ public class ItemCollisionHandler : MonoBehaviour
 
 		balanceDisplay.value = Mathf.Clamp((float)balanceDirection / (float)balanceCapacity, -1, 1);
 
-		Debug.Log("sliderValue: " + Mathf.Clamp((float)balanceDirection / (float)balanceCapacity, -1, 1));
+		//Debug.Log("sliderValue: " + Mathf.Clamp((float)balanceDirection / (float)balanceCapacity, -1, 1));
 
 		if (balanceDirection < 0)
 		{
@@ -87,7 +87,7 @@ public class ItemCollisionHandler : MonoBehaviour
 
 		Destroy(collectedObject);
 
-		Debug.Log($"balance direction: {balanceDirection}, balance Capacity: {balanceCapacity}");
+		//Debug.Log($"balance direction: {balanceDirection}, balance Capacity: {balanceCapacity}");
 
 		if (balanceDirection >= balanceCapacity)
 		{
