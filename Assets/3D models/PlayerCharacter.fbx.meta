@@ -2,7 +2,16 @@ fileFormatVersion: 2
 guid: 31c16bc715426e541941d02c0a28e66e
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -782727242154721834
+    second: PlayerCharacter|RaisePole
+  - first:
+      74: 421004473442982287
+    second: PlayerCharacter|RotatePoleLeft
+  - first:
+      74: 1785721120731525205
+    second: PlayerCharacter|RotatePoleRight
   externalObjects: {}
   materials:
     materialImportMode: 2
