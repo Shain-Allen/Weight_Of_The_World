@@ -951,10 +951,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159b7c9c1dbaf8c42a08d6fc32ddec17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landStartingPos: {fileID: 0}
-  landEndingPos: {fileID: 0}
-  mountainObject: {fileID: 0}
+  landStartingPos: {fileID: 239317730}
+  landEndingPos: {fileID: 627803550}
+  mountainObject: {fileID: 2676515004014988871, guid: 205cc5710c80c8d479bf9b3546d614f6,
+    type: 3}
   landMoveSpeed: 15
+  startingLand: {fileID: 1373515353}
 --- !u!4 &1010734344
 Transform:
   m_ObjectHideFlags: 0
@@ -1434,13 +1436,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCH: {fileID: 5380726605409073078}
   gameOverDisplay: {fileID: 971311374}
+--- !u!1 &1373515353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2676515004014988871, guid: 205cc5710c80c8d479bf9b3546d614f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3959445668065467217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1373515357 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1373515357, guid: 205cc5710c80c8d479bf9b3546d614f6,
     type: 3}
   m_PrefabInstance: {fileID: 3959445668065467217}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1373515353}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7618b6ed733fc0442acf2c3c868c69ff, type: 3}
@@ -1897,11 +1905,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MountainRange
-      objectReference: {fileID: 0}
-    - target: {fileID: 2676515004014988871, guid: 205cc5710c80c8d479bf9b3546d614f6,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3345950891585918205, guid: 205cc5710c80c8d479bf9b3546d614f6,
         type: 3}

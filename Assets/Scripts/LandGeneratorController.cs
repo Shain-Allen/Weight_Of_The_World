@@ -12,28 +12,55 @@ public class LandGeneratorController : MonoBehaviour
 	private GameObject mountainObject;
 
 	private bool geneateLand = true;
+	private bool firstLand = true;
+	private bool firstLandlerp = true;
 
 	[SerializeField]
 	private float landMoveSpeed = 15f;
 
-	/// <summary>
-	/// Update is called every frame, if the MonoBehaviour is enabled.
-	/// </summary>
-	private void Update()
-	{
+	[SerializeField]
+	private GameObject startingLand;
 
+	/// <summary>
+	/// Start is called on the frame when a script is enabled just before
+	/// any of the Update methods is called the first time.
+	/// </summary>
+	private void Start()
+	{
+		StartCoroutine(spawnislands());
+		StartCoroutine(Lerp(startingLand));
 	}
 
-	IEnumerable spawnislands()
+
+	IEnumerator spawnislands()
 	{
 		while (geneateLand == true)
 		{
-			//yield return WaitForSeconds()
+			if (!firstLand)
+				yield return new WaitForSeconds(landMoveSpeed / 2);
 			GameObject newLand = Instantiate(mountainObject, landStartingPos.position, Quaternion.identity);
+			StartCoroutine(Lerp(newLand));
+			firstLand = false;
+		}
+	}
 
-			//newLand.transform.position = Vector3.Lerp(landStartingPos, landEndingPos, )
+	IEnumerator Lerp(GameObject newland)
+	{
+		float timeElapsed = 0;
 
+		if (firstLandlerp)
+		{
+			timeElapsed = landMoveSpeed / 2;
+			firstLandlerp = false;
+		}
+
+		while (timeElapsed < landMoveSpeed)
+		{
+			newland.transform.position = Vector3.Lerp(landStartingPos.position, landEndingPos.position, timeElapsed / landMoveSpeed);
+			timeElapsed += Time.deltaTime;
 			yield return null;
 		}
+		newland.transform.position = landEndingPos.position;
+		Destroy(newland);
 	}
 }
