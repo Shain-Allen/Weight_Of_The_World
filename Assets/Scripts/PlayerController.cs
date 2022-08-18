@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private LayerMask floorLayer;
 
+	[SerializeField]
+	private Animator anim;
+
 
 	void Awake()
 	{
@@ -54,6 +57,24 @@ public class PlayerController : MonoBehaviour
 		{
 			playerTrans.position = new Vector3(playerTrans.position.x, raycastResults.point.y, playerTrans.position.z);
 		}
+
+		if(Input.GetKey(KeyCode.LeftArrow))
+        {
+			anim.SetBool("PoleLeft", true);
+        }
+		else
+        {
+			anim.SetBool("PoleLeft", false);
+		}
+
+		if(Input.GetKey(KeyCode.RightArrow))
+        {
+			anim.SetBool("PoleRight", true);
+        }
+		else
+        {
+			anim.SetBool("PoleRight", false);
+        }
 	}
 
 

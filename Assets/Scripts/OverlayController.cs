@@ -20,7 +20,8 @@ public class OverlayController : MonoBehaviour
 
 	public void OnGameOver(string message)
 	{
-		Debug.Log("yes, game over");
+		//Debug.Log("yes, game over");
 		gameOverDisplay.gameObject.SetActive(true);
+		gameOverDisplay.gameOverDescription.text = message;
 	}
 }

@@ -12,14 +12,15 @@ public class LandGeneratorController : MonoBehaviour
 	private GameObject mountainObject;
 
 	private bool geneateLand = true;
-	private bool firstLand = true;
-	private bool firstLandlerp = true;
 
 	[SerializeField]
 	private float landMoveSpeed = 15f;
+	private float islandAmount = 6;
 
 	[SerializeField]
 	private GameObject startingLand;
+	private bool firstLand = true;
+	private bool startingLandlerp = true;
 
 	/// <summary>
 	/// Start is called on the frame when a script is enabled just before
@@ -27,8 +28,8 @@ public class LandGeneratorController : MonoBehaviour
 	/// </summary>
 	private void Start()
 	{
-		StartCoroutine(spawnislands());
 		StartCoroutine(Lerp(startingLand));
+		StartCoroutine(spawnislands());
 	}
 
 
@@ -37,7 +38,7 @@ public class LandGeneratorController : MonoBehaviour
 		while (geneateLand == true)
 		{
 			if (!firstLand)
-				yield return new WaitForSeconds(landMoveSpeed / 2);
+				yield return new WaitForSeconds(landMoveSpeed / islandAmount + -0.1f);
 			GameObject newLand = Instantiate(mountainObject, landStartingPos.position, Quaternion.identity);
 			StartCoroutine(Lerp(newLand));
 			firstLand = false;
@@ -48,10 +49,12 @@ public class LandGeneratorController : MonoBehaviour
 	{
 		float timeElapsed = 0;
 
-		if (firstLandlerp)
+		if (startingLandlerp)
 		{
-			timeElapsed = landMoveSpeed / 2;
-			firstLandlerp = false;
+			startingLandlerp = false;
+			timeElapsed = landMoveSpeed * (4f / islandAmount);
+			newland.transform.position = Vector3.Lerp(landStartingPos.position, landEndingPos.position, timeElapsed / landMoveSpeed);
+			yield return new WaitForSeconds(landMoveSpeed * (3f / islandAmount));
 		}
 
 		while (timeElapsed < landMoveSpeed)

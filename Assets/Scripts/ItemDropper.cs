@@ -5,12 +5,14 @@ using UnityEngine;
 public class ItemDropper : MonoBehaviour
 {
 	[SerializeField]
-	private float radius = 5f;
-
-	[SerializeField]
 	private float spawnTimerMax = 10f;
 	[SerializeField]
 	private float spawnTimerMin = 3f;
+
+	[SerializeField]
+	private Transform minSpawnArea;
+	[SerializeField]
+	private Transform maxSpawnArea;
 
 	[SerializeField]
 	private GameObject[] items;
@@ -20,18 +22,8 @@ public class ItemDropper : MonoBehaviour
 	[SerializeField]
 	private ItemCollisionHandler itemCollisionHandler;
 
-	private float NumPoints = 32;
-	private void OnDrawGizmos()
-	{
-		float lastPoint = 0;
-		for (int i = 0; i < NumPoints; i++)
-		{
-			float newPoint = lastPoint + (360 / NumPoints);
-			Gizmos.DrawLine(PointOnCircle(transform.position, radius, lastPoint), PointOnCircle(transform.position, radius, newPoint));
-			lastPoint = newPoint;
-		}
-
-	}
+	[SerializeField]
+	private LayerMask Obsticles;
 
 	private void Start()
 	{
@@ -49,10 +41,16 @@ public class ItemDropper : MonoBehaviour
 	{
 		Vector3 spawnPos = new Vector3();
 
+		RaycastHit hit;
+
 		while (spawnItems)
 		{
-			float angle = Random.Range(0, 360);
-			spawnPos = PointOnCircle(transform.position, radius, angle);
+			spawnPos = PickSpawnLocation(transform, minSpawnArea.position, maxSpawnArea.position);
+
+			while(Physics.Raycast(spawnPos, Vector3.down,out hit, 100, Obsticles))
+            {
+				spawnPos = PickSpawnLocation(transform, minSpawnArea.position, maxSpawnArea.position);
+            }
 
 			yield return new WaitForSeconds(Random.Range(spawnTimerMin, spawnTimerMax));
 			GameObject item;
@@ -67,8 +65,14 @@ public class ItemDropper : MonoBehaviour
 		}
 	}
 
-	Vector3 PointOnCircle(Vector3 _Origin, float _radius, float angle)
-	{
-		return new Vector3(_Origin.x + radius * Mathf.Sin(angle * (Mathf.PI / 180)), _Origin.y, _Origin.z + radius * Mathf.Cos(angle * (Mathf.PI / 180)));
-	}
+	Vector3 PickSpawnLocation(Transform spawner ,Vector3 minSpawnArea, Vector3 maxSpawnArea)
+    {
+		Vector3 spawnPos = new Vector3();
+
+		spawnPos.x = Random.Range(minSpawnArea.x, maxSpawnArea.x);
+		spawnPos.y = spawner.position.y;
+		spawnPos.z = Random.Range(minSpawnArea.z, maxSpawnArea.z);
+
+		return spawnPos;
+    }
 }
