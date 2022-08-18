@@ -2073,6 +2073,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 257957715, guid: 9995a75255a134b4f893fc98a51a24ab, type: 3}
+      propertyPath: m_Name
+      value: Right Bucket
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180525772, guid: 9995a75255a134b4f893fc98a51a24ab, type: 3}
+      propertyPath: m_Name
+      value: Left Bucket
+      objectReference: {fileID: 0}
     - target: {fileID: 275046361158349459, guid: 9995a75255a134b4f893fc98a51a24ab,
         type: 3}
       propertyPath: m_Name
