@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class OverlayController : MonoBehaviour
 {
@@ -56,5 +57,10 @@ public class OverlayController : MonoBehaviour
 			}
 			currentTimeText.text = "Current Time: " + currentTime.ToString("#.00");
 		}
+	}
+
+	public void RestartGame()
+	{
+		SceneManager.LoadScene(0);
 	}
 }
