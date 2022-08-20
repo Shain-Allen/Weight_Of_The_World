@@ -31,8 +31,6 @@ public class OverlayController : MonoBehaviour
 
 		keepTime = true;
 
-		Debug.Log(PlayerPrefs.HasKey("BestTime"));
-
 		bestTime = PlayerPrefs.GetFloat("BestTime", 0);
 		bestTimeText.text = "Best Time: " + bestTime.ToString("#.00");
 	}

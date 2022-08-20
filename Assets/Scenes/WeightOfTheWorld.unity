@@ -1138,7 +1138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &971311373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1285,6 +1285,16 @@ MonoBehaviour:
   landEndingPos: {fileID: 627803550}
   mountainObject: {fileID: 2676515004014988871, guid: 205cc5710c80c8d479bf9b3546d614f6,
     type: 3}
+  obstacles:
+  - {fileID: 2195294908260739556, guid: ce05d633792616640a663139a402a790, type: 3}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 128
+  islandMask:
+    serializedVersion: 2
+    m_Bits: 64
+  minLandBound: {fileID: 2023791987}
+  maxLandBound: {fileID: 1775362758}
   landMoveSpeed: 30
   startingLand: {fileID: 1373515353}
 --- !u!4 &1010734344
