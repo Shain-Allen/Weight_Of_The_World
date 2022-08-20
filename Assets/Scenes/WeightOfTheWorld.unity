@@ -2742,6 +2742,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 06274c7047b503f46a2b7889dee904d7, type: 3}
     - target: {fileID: 5380726605409073078, guid: 9995a75255a134b4f893fc98a51a24ab,
         type: 3}
+      propertyPath: itemMissed
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c8639dd84f22d34eb74fcaf4f5c0695, type: 3}
+    - target: {fileID: 5380726605409073078, guid: 9995a75255a134b4f893fc98a51a24ab,
+        type: 3}
       propertyPath: balanceDisplay
       value: 
       objectReference: {fileID: 507434307}
