@@ -30,6 +30,11 @@ public class ItemCollisionHandler : MonoBehaviour
 
 	public event Action<string> OnGameOver;
 
+	public AudioSource audioSauce;
+
+	public AudioClip catchSound;
+	public AudioClip itemMissed;
+
 	private void Start()
 	{
 		leftBucket.OnObjectCollected += OnObjectCollected;
@@ -87,7 +92,7 @@ public class ItemCollisionHandler : MonoBehaviour
 
 		Destroy(collectedObject);
 
-		//Debug.Log($"balance direction: {balanceDirection}, balance Capacity: {balanceCapacity}");
+		audioSauce.PlayOneShot(catchSound);
 
 		if (balanceDirection >= balanceCapacity)
 		{
@@ -98,6 +103,8 @@ public class ItemCollisionHandler : MonoBehaviour
 	private void OnObjectMissed(GameObject other)
 	{
 		Destroy(other);
+
+		audioSauce.PlayOneShot(itemMissed);
 
 		godsGrace++;
 		missedObjectsDisplay.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText($"Missed Objecs: {godsGrace}/{ggCapacity}");
