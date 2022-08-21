@@ -17,9 +17,10 @@ public class ItemCollisionHandler : MonoBehaviour
 
 	private int leftBucketWeight = 0;
 	private int rightBucketWeight = 0;
-	private int bucketBalance;
 	[SerializeField]
 	private int balanceCapacity = 10;
+
+	public float publicbalanceDirection = 0;
 
 	[SerializeField]
 	private int ggCapacity = 4;
@@ -59,8 +60,11 @@ public class ItemCollisionHandler : MonoBehaviour
 				rightBucketWeight += collectedObject.GetComponent<ItemData>().itemValues.itemWeight;
 			}
 		}
+		
 
 		float balanceDirection = rightBucketWeight - leftBucketWeight;
+
+		publicbalanceDirection = balanceDirection;
 
 		balanceDisplay.value = Mathf.Clamp((float)balanceDirection / (float)balanceCapacity, -1, 1);
 

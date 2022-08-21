@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField]
 	private Animator anim;
 
+	private ItemCollisionHandler itemCH;
+
 
 	void Awake()
 	{
@@ -33,52 +35,65 @@ public class PlayerController : MonoBehaviour
 		QualitySettings.vSyncCount = 1;
 
 		playerTrans = GetComponent<Transform>();
+
+		itemCH = GetComponent<ItemCollisionHandler>();
 	}
 
 
 	// Update is called once per frame
 	void Update()
-	{
-		if (Input.GetKey(KeyCode.Escape))
-		{
-			Application.Quit();
-		}
-
-
-		moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
-		playerTrans.position += moveDir * movementSpeed * Time.deltaTime;
-
-		playerTrans.position = ClampVector3(playerTrans.position, MinOuterBound.position, MaxOuterBound.position);
-
-		RaycastHit raycastResults;
-
-		if (Physics.Raycast(HipLocation.position, Vector3.down, out raycastResults, 100f, floorLayer))
-		{
-			playerTrans.position = new Vector3(playerTrans.position.x, raycastResults.point.y, playerTrans.position.z);
-		}
-
-		if(Input.GetKey(KeyCode.LeftArrow))
+    {
+        if (Input.GetKey(KeyCode.Escape))
         {
-			anim.SetBool("PoleLeft", true);
+            Application.Quit();
         }
-		else
-        {
-			anim.SetBool("PoleLeft", false);
-		}
 
-		if(Input.GetKey(KeyCode.RightArrow))
+
+        moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        AnimatePole();
+
+        moveDir = moveDir * movementSpeed * Time.deltaTime;
+
+        if (anim.GetBool("PoleRight") == false && anim.GetBool("PoleLeft") == false)
         {
-			anim.SetBool("PoleRight", true);
+            moveDir += new Vector3(itemCH.publicbalanceDirection, 0, 0);
         }
-		else
+
+        playerTrans.position += moveDir;
+
+        playerTrans.position = ClampVector3(playerTrans.position, MinOuterBound.position, MaxOuterBound.position);
+
+        RaycastHit raycastResults;
+
+        if (Physics.Raycast(HipLocation.position, Vector3.down, out raycastResults, 100f, floorLayer))
         {
-			anim.SetBool("PoleRight", false);
+            playerTrans.position = new Vector3(playerTrans.position.x, raycastResults.point.y, playerTrans.position.z);
         }
-	}
+    }
 
+    private void AnimatePole()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            anim.SetBool("PoleLeft", true);
+        }
+        else
+        {
+            anim.SetBool("PoleLeft", false);
+        }
 
-	Vector3 ClampVector3(Vector3 value, Vector3 min, Vector3 max)
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            anim.SetBool("PoleRight", true);
+        }
+        else
+        {
+            anim.SetBool("PoleRight", false);
+        }
+    }
+
+    Vector3 ClampVector3(Vector3 value, Vector3 min, Vector3 max)
 	{
 		Vector3 clampedValue = new Vector3(0, 0, 0);
 
