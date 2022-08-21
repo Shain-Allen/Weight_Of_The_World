@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
 
         playerTrans.position = ClampVector3(playerTrans.position, MinOuterBound.position, MaxOuterBound.position);
 
+        moveDir = Vector3.zero;
+
         RaycastHit raycastResults;
 
         if (Physics.Raycast(HipLocation.position, Vector3.down, out raycastResults, 100f, floorLayer))

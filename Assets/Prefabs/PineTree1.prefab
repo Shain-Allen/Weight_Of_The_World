@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 340737489288711000}
   - component: {fileID: 8822691671943566769}
   - component: {fileID: 152296257473993564}
+  - component: {fileID: 5729152144753390791}
   m_Layer: 7
   m_Name: PineTree1Trunk
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5729152144753390791
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022327139655673928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2239957384606069155, guid: 2c678f9bead027d479b0b303ca69b45a, type: 3}
 --- !u!1 &2195294908260739556
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +107,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1530258201896465246}
-  - component: {fileID: 1348309975286928567}
   m_Layer: 7
   m_Name: PineTree1
   m_TagString: obstacle
@@ -117,19 +131,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1348309975286928567
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2195294908260739556}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.8861799, y: 3.2398188, z: 1.8503139}
-  m_Center: {x: 0.013601899, y: 1.6002163, z: 0.0104551315}
 --- !u!1 &7799325411715500019
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,9 +142,10 @@ GameObject:
   - component: {fileID: 3105296438262258074}
   - component: {fileID: 2898254796159387380}
   - component: {fileID: 4722789840114720592}
+  - component: {fileID: 1241471817781460815}
   m_Layer: 7
   m_Name: PineTree1Leaves
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,3 +215,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1241471817781460815
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799325411715500019}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7652550572808808441, guid: 2c678f9bead027d479b0b303ca69b45a, type: 3}
