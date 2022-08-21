@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
 
 	private ItemCollisionHandler itemCH;
 
+    [SerializeField]
+    private float weightScaleFactor = 128; 
+
 
 	void Awake()
 	{
@@ -53,11 +56,22 @@ public class PlayerController : MonoBehaviour
 
         AnimatePole();
 
-        moveDir = moveDir * movementSpeed * Time.deltaTime;
-
-        if (anim.GetBool("PoleRight") == false && anim.GetBool("PoleLeft") == false)
+        if (moveDir != Vector3.zero)
         {
-            moveDir += new Vector3(itemCH.publicbalanceDirection, 0, 0);
+            moveDir = moveDir * movementSpeed * Time.deltaTime;
+
+            if (!anim.GetBool("PoleRight") && !anim.GetBool("PoleLeft"))
+            {
+                moveDir += new Vector3(itemCH.publicbalanceDirection/weightScaleFactor, 0, 0);
+            }
+            else if (anim.GetBool("PoleLeft"))
+            {
+                moveDir += new Vector3(0, 0, itemCH.publicbalanceDirection / weightScaleFactor);
+            }
+            else if (anim.GetBool("PoleRight"))
+            {
+                moveDir += new Vector3(0, 0, -1 * (itemCH.publicbalanceDirection / weightScaleFactor));
+            }
         }
 
         playerTrans.position += moveDir;
