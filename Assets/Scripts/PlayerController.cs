@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 	private ItemCollisionHandler itemCH;
 
     [SerializeField]
-    private float weightScaleFactor = 128; 
+    private float weightScaleFactor = 128;
 
 
 	void Awake()
@@ -46,12 +46,6 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-
-
         moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         AnimatePole();
