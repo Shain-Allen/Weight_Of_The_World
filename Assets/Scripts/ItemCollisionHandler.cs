@@ -61,6 +61,11 @@ public class ItemCollisionHandler : MonoBehaviour
 			}
 		}
 		
+		if(collectedObject.tag == "forgiveness")
+		{
+            godsGrace--;
+			UpdateMissedObjectsText();
+        }
 
 		float balanceDirection = rightBucketWeight - leftBucketWeight;
 
@@ -108,14 +113,24 @@ public class ItemCollisionHandler : MonoBehaviour
 	{
 		Destroy(other);
 
-		audioSauce.PlayOneShot(itemMissed);
+		
 
-		godsGrace++;
-		missedObjectsDisplay.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText($"Missed Objecs: {godsGrace}/{ggCapacity}");
+		if (other.tag != "forgiveness")
+		{
+            audioSauce.PlayOneShot(itemMissed);
+            godsGrace++;
+        }
+		
+		UpdateMissedObjectsText();
 
 		if (godsGrace == ggCapacity)
 		{
 			OnGameOver?.Invoke("you have displeased the Gods. They dislike having their things touch the ground");
 		}
 	}
+
+	private void UpdateMissedObjectsText()
+	{
+        missedObjectsDisplay.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText($"Missed Objecs: {godsGrace}/{ggCapacity}");
+    }
 }
